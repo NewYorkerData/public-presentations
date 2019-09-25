@@ -1,0 +1,69 @@
+#+Title: skorch: A scikit-learn compatible neural network library that wraps pytorch
+#+Author: Benjamin Bossan
+#+OPTIONS: toc:nil
+#+REVEAL_TITLE_SLIDE: %t
+#+MACRO: color @@html:<font color="$1">$2</font>@@
+#+REVEAL_EXTRA_CSS: ./reveal.js/css/theme/league.css
+#+OPTIONS: reveal_single_file:t
+
+#+attr_html: :width 300px
+#+CAPTION:
+[[./assets/skorch_inv.svg]]
+* Introduction
+** Become a deep data scientist now!
+#+attr_html: :width 500px
+#+CAPTION:
+[[./assets/lecun_skorch.jpg]]
+** Philosophy
+- sklearn API
+- don't hide PyTorch
+- hackable
+- don't reinvent the wheel
+** Reuse existing concepts instead of reinventing the wheel
+#+attr_html: :width 400px
+#+CAPTION:
+[[./assets/skorch_torch_sklearn.svg]]
+** Main additions
+** Reduction of boilerplate code
+#+BEGIN_SRC python
+from torch import nn
+from skorch import NeuralNetClassifier
+
+class MyModule(nn.Module):
+    # your normal module code
+
+net = NeuralNetClassifier(
+    MyModule,
+    max_epochs=10,
+    lr=2e-4,
+    batch_size=256,
+)
+net.fit(X, y)
+y_pred = net.predict(X)
+#+END_SRC
+** Handling of different data formats
+- pytorch Datasets (most)
+- numpy arrays
+- dict or list of arrays
+- pandas DataFrames
+- scipy sparse CSR matrices
+** Callbacks
+- learning rate schedulers
+- scoring functions (with sklearn)
+- early stopping
+- checkpointing
+- parameter freezing
+- tensorboard
+- ...
+* Questions?
+skorch: https://github.com/skorch-dev/skorch
+
+TODO: Link to presentation on github
+
+#+attr_html: :width 150px
+[[./assets/NY_RGB.svg]]
+
+Open positions: https://jobs.newyorker.de
+- Senior Data Scientist in Berlin
+- Senior Python Software Developer in Berlin
+TODO: Verify that this is true at the time of presentation
