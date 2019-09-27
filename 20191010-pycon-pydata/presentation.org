@@ -23,7 +23,14 @@
 #+attr_html: :width 400px
 #+CAPTION:
 [[./assets/skorch_torch_sklearn.svg]]
-** Main additions
+** Reuse existing concepts instead of reinventing the wheel
+Advantages:
+- little new concepts to learn
+- no "lock in" effect
+  + easy to swap out neural net with any sklearn estimator
+  + easy to extract torch module
+- keep complexity of code base down
+* Main additions
 ** Reduction of boilerplate code
 #+BEGIN_SRC python
 from torch import nn
