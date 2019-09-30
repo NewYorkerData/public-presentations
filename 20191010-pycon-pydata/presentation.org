@@ -5,6 +5,7 @@
 #+MACRO: color @@html:<font color="$1">$2</font>@@
 #+REVEAL_EXTRA_CSS: ./reveal.js/css/theme/league.css
 #+OPTIONS: reveal_single_file:t
+#+OPTIONS: num:nil
 
 #+attr_html: :width 300px
 #+CAPTION:
@@ -14,6 +15,19 @@
 #+attr_html: :width 500px
 #+CAPTION:
 [[./assets/lecun_skorch.jpg]]
+** Basic facts
+#+attr_html: :width 800px
+#+CAPTION: Github page as of Sep 29, 2019
+[[./assets/skorch_github.png]]
+** 
+#+attr_html: :width 400px
+#+CAPTION:
+[[./assets/some_facts.svg]]
+- mature: first commit July 2017
+- 3 main contributors
+- used in production
+- many examples and notebooks in repo
+- extensive docs: https://skorch.readthedocs.io
 ** Philosophy
 - sklearn API
 - don't hide PyTorch
@@ -23,15 +37,17 @@
 #+attr_html: :width 400px
 #+CAPTION:
 [[./assets/skorch_torch_sklearn.svg]]
-** Reuse existing concepts instead of reinventing the wheel
+** 
 Advantages:
-- little new concepts to learn
-- no "lock in" effect
+- few new concepts to learn
+- keeps complexity of code base down
+- no lock in effect
   + easy to swap out neural net with any sklearn estimator
-  + easy to extract torch module
-- keep complexity of code base down
-* Main additions
-** Reduction of boilerplate code
+  + easy to extract torch module and use it without skorch
+* Reduction of boilerplate code
+** pure PyTorch
+TODO: show equivalent code
+** same in skorch
 #+BEGIN_SRC python
 from torch import nn
 from skorch import NeuralNetClassifier
@@ -41,33 +57,252 @@ class MyModule(nn.Module):
 
 net = NeuralNetClassifier(
     MyModule,
-    max_epochs=10,
-    lr=2e-4,
+    max_epochs=20,
+    lr=0.02,
     batch_size=256,
+    device='cuda',
 )
 net.fit(X, y)
-y_pred = net.predict(X)
+#+END_SRC
+** useful print log
+#+attr_html: :width 400px
+#+CAPTION:
+[[./assets/skorch_print_log.png]]
+* sklearn compatibility
+** API
+#+BEGIN_SRC python
+from sklearn.base import clone
+from sklearn.model_selection import cross_validate
+
+net.fit(X, y)
+net.predict(X)
+net.predict_proba(X)
+net.get_params()
+net.set_params(...)
+clone(net)
+cross_validate(net, X, y)
+...
+#+END_SRC
+** Pipelines
+#+BEGIN_SRC python
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+
+pipe = Pipeline([
+    ('scale', StandardScaler()),
+    ('net', net),
+])
+
+pipe.fit(X, y)
+y_pred = pipe.predict(X)
+y_proba = pipe.predict_proba(X)
+#+END_SRC
+** pickling
+#+BEGIN_SRC python
+import pickle
+
+pipe = Pipeline([
+    ('scale', StandardScaler()),
+    ('net', net),
+])
+
+pipe.fit(X, y)
+
+with open('my_pipeline.pickle', 'wb') as f:
+    pickle.dump(pipe, f)
+#+END_SRC
+** GridSearchCV et al.
+#+BEGIN_SRC python
+class MyModule(nn.Module):
+    def __init__(self, num_units=10, dropout=0.5):
+        super(ClassifierModule, self).__init__()
+
+        self.dense0 = nn.Linear(20, num_units)
+        self.dropout = nn.Dropout(dropout)
+        self.output = nn.Linear(num_units, 2)
+
+    def forward(self, X, **kwargs):
+        ...
+
+params = {
+    'lr': [0.05, 0.1],
+    'optimizer__nesterov': [False, True],
+    'module__num_units': [10, 20, 50],
+    'module__dropout': [0, 0.5],
+}
+search = GridSearchCV(net, params).fit(X, y)
+#+END_SRC
+** Grid search everything!
+You can grid search the parameters of almost everything:
+- NeuralNet
+- module
+- optimizer
+- criterion
+- DataLoader
+- callbacks
+** swap out skorch estimator with any sklearn estimator
+#+BEGIN_SRC python
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+
+pipe = Pipeline([
+    ('scale', StandardScaler()),
+    ('model', net),
+])
+params = {'model': [net, KNeighborsClassifier(), LogisticRegression()]}
+search = GridSearchCV(pipe, params)
+search.fit(X, y)
+#+END_SRC
+** distributed GridSearchCV
+#+BEGIN_SRC python
+from dask.distributed import Client
+from joblib import parallel_backend
+
+client = Client('127.0.0.1:8786')
+
+search = GridSearchCV(...)
+with parallel_backend('dask'):
+    search.fit(X, y)
+#+END_SRC
+* Many more additions
+** Save state dict for better compatibility
+#+BEGIN_SRC python
+from skorch.callbacks import Checkpoint
+cp = Checkpoint(monitor='valid_loss_best', dirname='exp1')
+net = NeuralNetClassifier(..., callbacks=[cp])
+net.fit(X, y)  # Checkpoint saves each time valid lost improves
+net.save_params(
+    f_params='mynet.pt',  # <- state dict of module
+    f_optimizer='myoptimizer.pt',  # <- state dict of optimizer
+)
 #+END_SRC
 ** Handling of different data formats
-- pytorch Datasets (most)
 - numpy arrays
+- PyTorch Datasets (most)
 - dict or list of arrays
 - pandas DataFrames
 - scipy sparse CSR matrices
 ** Callbacks
 - learning rate schedulers
-- scoring functions (with sklearn)
+- scoring functions (support for custom or sklearn metrics)
 - early stopping
 - checkpointing
 - parameter freezing
 - tensorboard
 - ...
+** Helper for command line usage
+No longer write dozen of lines of argument parsing and still forget
+half of the arguments
+#+BEGIN_SRC python
+import fire
+from skorch.helper import parse_args
+
+def get_data():
+    ...
+def get_model():
+    class MyModule(nn.Module):
+        ...
+    return NeuralNetClassifier(MyModule, ...)
+
+def main(**kwargs):
+    X, y = get_data()
+    my_model = get_model()
+    # important: wrap the model with the parsed arguments
+    my_model = parse_args(kwargs)(my_model)
+    my_model.fit(X, y)
+
+if __name__ == '__main__':
+    fire.Fire(main)
+#+END_SRC
+** 
+#+BEGIN_SRC shell
+$ python train.py --help
+<NeuralNetClassifier> options:
+  --module : torch module (class or instance)
+    A PyTorch :class:`~torch.nn.Module`. In general, the
+    uninstantiated class should be passed, although instantiated
+    modules will also work.
+  --criterion : torch criterion (class, default=torch.nn.NLLLoss)
+    Negative log likelihood loss. Note that the module should return
+    probabilities, the log is applied during ``get_loss``.
+  --optimizer : torch optim (class, default=torch.optim.SGD)
+    The uninitialized optimizer (update rule) used to optimize the
+    module
+  --lr : float (default=0.01)
+    Learning rate passed to the optimizer. You may use ``lr`` instead
+    of using ``optimizer__lr``, which would result in the same outcome.
+  ...
+
+<MyModule> options:
+  --module__hidden_units : int (default=30)
+    Number of units in hidden layers.
+  --module__nonlin : torch.nn.Module instance (default=torch.nn.ReLU())
+    Non-linearity to apply after hidden layers.
+  ...
+#+END_SRC
+** 
+#+BEGIN_SRC shell
+$ python train.py --lr 0.1 --max_epochs 5 --device 'cuda' \
+  --module__hidden_units 50 --module__nonlin 'torch.nn.RReLU(0.1, upper=0.4)' \
+  --callbacks__valid_acc__on_train --callbacks__valid_acc__name 'new_name'
+#+END_SRC
+* Easily hackable
+** Methods designed for easy overriding
+#+BEGIN_SRC python
+class MyNet(NeuralNet):
+    def get_loss(...):
+    def get_iterator(...):
+    def train_step(...):
+
+class MyCallback(Callback):
+    def on_train_begin(...):
+    def on_epoch_begin(...):
+    def on_batch_end(...)
+    def on_grad_computed(...):
+#+END_SRC
+** Example: write your own callback
+After training ends, send a tweet with best validation accuracy
+#+BEGIN_SRC python
+def send_tweet(msg):
+    ...
+
+class TweetAccuracy(Callback):
+    def __init__(self, min_accuracy=0.99):
+        self.min_accuracy = min_accuracy
+
+    def on_train_end(self, net, **kwargs):
+        best_accuracy = max(net.history[:, 'valid_acc'])
+        if best_accuracy > self.min_accuracy:
+            msg = "Reached an accuracy of {:.6f}!!!".format(best_accuracy)
+            send_tweet(msg)
+#+END_SRC
+** Example: implement gradient accumulation
+#+BEGIN_SRC python
+class GradAccNet(NeuralNetClassifier):
+    def __init__(self, *args, acc_steps=2, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.acc_steps = acc_steps
+
+    def get_loss(self, *args, **kwargs):
+        loss = super().get_loss(*args, **kwargs)
+        return loss / self.acc_steps  # normalize loss
+
+    def train_step(self, Xi, yi, **fit_params):
+        n_train_batches = len(self.history[-1, 'batches'])
+        step = self.train_step_single(Xi, yi, **fit_params)
+
+        if n_train_batches % self.acc_steps == 0:
+            self.optimizer_.step()
+            self.optimizer_.zero_grad()
+        return step
+#+END_SRC
 * Questions?
 skorch: https://github.com/skorch-dev/skorch
 
-TODO: Link to presentation on github
+- TODO: list of main contributors
+- TODO: Link to presentation on github
 
-#+attr_html: :width 150px
+#+attr_html: :width 120px
 [[./assets/NY_RGB.svg]]
 
 Open positions: https://jobs.newyorker.de
