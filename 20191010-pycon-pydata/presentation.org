@@ -19,7 +19,7 @@
 #+attr_html: :width 800px
 #+CAPTION: Github page as of Sep 29, 2019
 [[./assets/skorch_github.png]]
-** 
+**
 #+attr_html: :width 400px
 #+CAPTION:
 [[./assets/some_facts.svg]]
@@ -37,7 +37,7 @@
 #+attr_html: :width 400px
 #+CAPTION:
 [[./assets/skorch_torch_sklearn.svg]]
-** 
+**
 Advantages:
 - few new concepts to learn
 - keeps complexity of code base down
@@ -46,7 +46,49 @@ Advantages:
   + easy to extract torch module and use it without skorch
 * Reduction of boilerplate code
 ** pure PyTorch
-TODO: show equivalent code
+#+REVEAL_HTML: <div style="font-size: 50%;">
+#+BEGIN_SRC python
+import torch
+from torch import nn
+
+class MyModule(nn.Module):
+    # your normal module code
+
+ds_train = torch.utils.data.TensorDataset(torch.from_numpy(X_train), torch.from_numpy(y_train))
+loader_train = torch.utils.data.DataLoader(ds_train, batch_size=256, shuffle=True)
+ds_valid = torch.utils.data.TensorDataset(torch.from_numpy(X_valid), torch.from_numpy(y_valid))
+loader_valid = torch.utils.data.DataLoader(ds_valid, batch_size=256)
+module = MyModule()
+optimizer = torch.optim.SGD(module.parameters(), lr=0.02)
+criterion = nn.NLLLoss()
+template = "epoch: {} | loss train: {:.4f} | loss valid: {:.4f} | acc valid: {:.4f} | dur: {:.3f}"
+
+for epoch in range(20):
+    tic = time.time()
+    losses_train = []
+    for Xb, yb in loader_train:
+        y_proba = module(Xb)
+        loss = criterion(torch.log(y_proba), yb)
+        loss.backward()
+        optimizer.step()
+        optimizer.zero_grad()
+        losses_train.append(loss.item())
+
+    losses_valid = []
+    accuracy_valid = []
+    for Xb, yb in loader_valid:
+        y_proba = module(Xb)
+        loss = criterion(torch.log(y_proba), yb)
+        optimizer.step()
+        optimizer.zero_grad()
+        losses_valid.append(loss.item())
+        accuracy_valid.append(accuracy_score(yb.numpy(), y_proba.argmax(1).numpy()))
+
+    toc = time.time() - tic
+    print(template.format(
+        epoch + 1, np.mean(losses_train), np.mean(losses_valid), np.mean(accuracy_valid), toc))
+#+END_SRC
+#+REVEAL_HTML: </div>
 ** same in skorch
 #+BEGIN_SRC python
 from torch import nn
@@ -57,9 +99,11 @@ class MyModule(nn.Module):
 
 net = NeuralNetClassifier(
     MyModule,
+    module__num_units=50,
     max_epochs=20,
     lr=0.02,
     batch_size=256,
+    iterator_train__shuffle=True,
     device='cuda',
 )
 net.fit(X, y)
@@ -97,6 +141,7 @@ pipe.fit(X, y)
 y_pred = pipe.predict(X)
 y_proba = pipe.predict_proba(X)
 #+END_SRC
+Training on GPU, loading on CPU is no problem.
 ** pickling
 #+BEGIN_SRC python
 import pickle
@@ -113,11 +158,13 @@ with open('my_pipeline.pickle', 'wb') as f:
 #+END_SRC
 ** GridSearchCV et al.
 #+BEGIN_SRC python
+from sklearn.model_selection import GridSearchCV
+
 class MyModule(nn.Module):
     def __init__(self, num_units=10, dropout=0.5):
-        super(ClassifierModule, self).__init__()
+        super().__init__()
 
-        self.dense0 = nn.Linear(20, num_units)
+        self.dense = nn.Linear(20, num_units)
         self.dropout = nn.Dropout(dropout)
         self.output = nn.Linear(num_units, 2)
 
@@ -126,7 +173,7 @@ class MyModule(nn.Module):
 
 params = {
     'lr': [0.05, 0.1],
-    'optimizer__nesterov': [False, True],
+    'optimizer__momentum': [0.0, 0.9],
     'module__num_units': [10, 20, 50],
     'module__dropout': [0, 0.5],
 }
@@ -214,7 +261,7 @@ def main(**kwargs):
 if __name__ == '__main__':
     fire.Fire(main)
 #+END_SRC
-** 
+**
 #+BEGIN_SRC shell
 $ python train.py --help
 <NeuralNetClassifier> options:
@@ -240,7 +287,7 @@ $ python train.py --help
     Non-linearity to apply after hidden layers.
   ...
 #+END_SRC
-** 
+**
 #+BEGIN_SRC shell
 $ python train.py --lr 0.1 --max_epochs 5 --device 'cuda' \
   --module__hidden_units 50 --module__nonlin 'torch.nn.RReLU(0.1, upper=0.4)' \
