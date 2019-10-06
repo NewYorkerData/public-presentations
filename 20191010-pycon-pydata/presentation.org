@@ -204,14 +204,14 @@ search = GridSearchCV(net, params).fit(X, y)
 You can grid search the parameters of almost everything:
 
 #+REVEAL_HTML: <div style="font-size: 75%;">
-| component    | examples                                               |
-|--------------+--------------------------------------------------------|
-| ~NeuralNet~  | ~lr, max_epochs, batch_size~                           |
-| ~module~     | ~module__num_units, module__nonlin~                    |
-| ~optimizer~  | ~optimizer__momentum, optimizer__nesterov~             |
-| ~criterion~  | ~criteron__reduction, criterion__ignore_index~         |
-| ~DataLoader~ | ~iterator_train__shuffle, iterator_valid__num_workers~ |
-| ~callbacks~  | ~valid_acc__on_train, mycb__any_parameter~             |
+| component    | examples                                                         |
+|--------------+------------------------------------------------------------------|
+| ~NeuralNet~  | ~lr, max_epochs, batch_size~                                     |
+| ~module~     | ~module__num_units, module__nonlin~                              |
+| ~optimizer~  | ~optimizer__momentum, optimizer__nesterov~                       |
+| ~criterion~  | ~criteron__reduction, criterion__ignore_index~                   |
+| ~DataLoader~ | ~iterator_train__shuffle, iterator_valid__num_workers~           |
+| ~callbacks~  | ~callbacks__valid_acc__on_train, callbacks__mycb__any_parameter~ |
 #+REVEAL_HTML: </div>
 ** swap out skorch estimator with any sklearn estimator
 #+BEGIN_SRC python
