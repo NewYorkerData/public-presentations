@@ -4,6 +4,7 @@
 #+REVEAL_TITLE_SLIDE: %t
 #+MACRO: color @@html:<font color="$1">$2</font>@@
 #+REVEAL_EXTRA_CSS: ./reveal.js/css/theme/league.css
+#+REVEAL_EXTRA_CSS: ./local.css
 #+OPTIONS: reveal_single_file:t
 #+OPTIONS: num:nil
 
