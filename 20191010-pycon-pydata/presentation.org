@@ -13,8 +13,8 @@
 [[./assets/skorch_inv.svg]]
 * Introduction
 ** About me
-- one of the contributors to skorch
-- [[https://github.com/BenjaminBossan][benjaminbossan]] on github
+- one of the contributors to [[https://github.com/skorch-dev/skorch][skorch]]
+- [[https://github.com/BenjaminBossan][BenjaminBossan]] on github
 - head of data science Berlin at NewYorker (fashion company, not magazine)
 ** Become a deep data scientist now!
 #+attr_html: :width 500px
