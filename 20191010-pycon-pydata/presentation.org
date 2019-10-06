@@ -1,4 +1,4 @@
-#+Title: skorch: A scikit-learn compatible neural network library that wraps pytorch
+#+Title: skorch: A scikit-learn compatible neural network library that wraps PyTorch
 #+Author: Benjamin Bossan
 #+OPTIONS: toc:nil
 #+REVEAL_TITLE_SLIDE: %t
@@ -27,7 +27,7 @@
 - mature: first commit July 2017
 - 3 main contributors
 - used in production
-- many [[https://github.com/skorch-dev/skorch/tree/master/examples][examples]] and [[https://github.com/skorch-dev/skorch/tree/master/notebooks][notebooks]] in repo
+- many [[https://github.com/skorch-dev/skorch/tree/master/examples][examples]] and [[https://github.com/skorch-dev/skorch/tree/master/notebooks][notebooks]] in repository
 - extensive docs: https://skorch.readthedocs.io
 ** Philosophy
 - sklearn API

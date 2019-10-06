@@ -8,6 +8,9 @@ To view the reveal.js presentation, download and open
 Org files are rendered on github. To view it directly, click [this
 link](https://github.com/BenjaminBossan/public-presentations/blob/master/20191010-pycon-pydata/presentation.org).
 
+View the accompanying notebook on
+[nbviewer](https://nbviewer.jupyter.org/github/NewYorkerData/public-presentations/blob/master/20191010-pycon-pydata/pycon_showcase_skorch.ipynb).
+
 ## Running
 
 To compile from source, open and edit `presentation.org` and run
