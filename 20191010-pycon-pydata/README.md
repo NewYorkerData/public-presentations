@@ -2,8 +2,11 @@
 
 ## Opening
 
-Just open the created `presentation.html` in your favorite browser
-(tested on Firefox).
+To view the reveal.js presentation, download and open
+`presentation.html` in your favorite browser (tested on Firefox).
+
+Org files are rendered on github. To view it directly, click [this
+link](https://github.com/BenjaminBossan/public-presentations/blob/master/20191010-pycon-pydata/presentation.org).
 
 ## Running
 
