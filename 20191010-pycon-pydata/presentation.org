@@ -12,6 +12,10 @@
 #+CAPTION:
 [[./assets/skorch_inv.svg]]
 * Introduction
+** About me
+- one of the contributors to skorch
+- [[https://github.com/BenjaminBossan][benjaminbossan]] on github
+- head of data science Berlin at NewYorker (fashion company, not magazine)
 ** Become a deep data scientist now!
 #+attr_html: :width 500px
 #+CAPTION:
@@ -239,7 +243,7 @@ with parallel_backend('dask'):
     search.fit(X, y)
 #+END_SRC
 * Many more additions
-** Save state dict for better compatibility
+** Save ~state_dict~ for better compatibility
 #+BEGIN_SRC python
 from skorch.callbacks import Checkpoint
 
@@ -259,7 +263,7 @@ net.save_params(
 - scipy sparse CSR matrices
 ** Callbacks
 - learning rate schedulers
-- scoring functions (support for custom or sklearn metrics)
+- scoring functions (custom or sklearn metrics)
 - early stopping
 - checkpointing
 - parameter freezing
@@ -345,7 +349,7 @@ class TweetAccuracy(Callback):
 
     def on_train_end(self, net, **kwargs):
         best_accuracy = max(net.history[:, 'valid_acc'])
-        if best_accuracy > self.min_accuracy:
+        if best_accuracy >= self.min_accuracy:
             msg = "Reached an accuracy of {:.4f}!!!".format(best_accuracy)
             send_tweet(msg)
 #+END_SRC
