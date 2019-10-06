@@ -2916,13 +2916,13 @@ skorch: A scikit-learn compatible neural network library that wraps pytorch
 </p>
 </div>
 <section>
-<section id="slide-org21d0636">
-<h2 id="org21d0636">Introduction</h2>
-<div class="outline-text-2" id="text-org21d0636">
+<section id="slide-org23866c6">
+<h2 id="org23866c6">Introduction</h2>
+<div class="outline-text-2" id="text-org23866c6">
 </div>
 </section>
-<section id="slide-org18f2de2">
-<h3 id="org18f2de2">Become a deep data scientist now!</h3>
+<section id="slide-org4d2d370">
+<h3 id="org4d2d370">Become a deep data scientist now!</h3>
 
 <div class="figure">
 <p><img src="data:image/jpg;base64,/9j/4AAQSkZJRgABAQEAXwBfAAD/4iOISUNDX1BST0ZJTEUAAQEAACN4bGNtcwIQAABtbnRyUkdC
@@ -3657,8 +3657,8 @@ jGOnTGMY6dMYxjp0xjGOnTGMY6dMYxjp0xjGOnTGMY6dMYxjp0xjGOnTGMY6dMYxjp0xjGOnTGMY
 </p>
 </div>
 </section>
-<section id="slide-orgca0a6ef">
-<h3 id="orgca0a6ef">Basic facts 1</h3>
+<section id="slide-org18b038e">
+<h3 id="org18b038e">Basic facts 1</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+AAAAErCAYAAABel+kjAAAABHNCSVQICAgIfAhkiAAAABl0RVh0
@@ -4392,8 +4392,8 @@ REREREQkBjQBFxEREREREYkBTcBFREREREREYkATcBEREREREZEY0ARcREREREREJAb+P8qnDmOF
 <p><span class="figure-number">Figure 3: </span>Github page as of Sep 29, 2019</p>
 </div>
 </section>
-<section id="slide-org7f5d334">
-<h3 id="org7f5d334">Basic facts 2</h3>
+<section id="slide-org50b1e21">
+<h3 id="org50b1e21">Basic facts 2</h3>
 
 <div class="figure">
 <p><svg    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -4822,23 +4822,23 @@ REREREQkBjQBFxEREREREYkBTcBFREREREREYkATcBEREREREZEY0ARcREREREREJAb+P8qnDmOF
 <li>mature: first commit July 2017</li>
 <li>3 main contributors</li>
 <li>used in production</li>
-<li>many examples and notebooks in repo</li>
+<li>many <a href="https://github.com/skorch-dev/skorch/tree/master/examples">examples</a> and <a href="https://github.com/skorch-dev/skorch/tree/master/notebooks">notebooks</a> in repo</li>
 <li>extensive docs: <a href="https://skorch.readthedocs.io">https://skorch.readthedocs.io</a></li>
 
 </ul>
 </section>
-<section id="slide-orgbc54fe7">
-<h3 id="orgbc54fe7">Philosophy</h3>
+<section id="slide-org4dce088">
+<h3 id="org4dce088">Philosophy</h3>
 <ul>
 <li>sklearn API</li>
+<li>hackable</li>
 <li>don't hide PyTorch</li>
 <li>don't reinvent the wheel</li>
-<li>hackable</li>
 
 </ul>
 </section>
-<section id="slide-org9557224">
-<h3 id="org9557224">Reuse existing concepts instead of reinventing the wheel</h3>
+<section id="slide-orge07519b">
+<h3 id="orge07519b">Reuse existing concepts instead of reinventing the wheel</h3>
 
 <div class="figure">
 <p><svg    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -5671,15 +5671,15 @@ REREREQkBjQBFxEREREREYkBTcBFREREREREYkATcBEREREREZEY0ARcREREREREJAb+P8qnDmOF
 </p>
 </div>
 </section>
-<section id="slide-org7b3f69e">
-<h3 id="org7b3f69e">Advantages</h3>
+<section id="slide-orgcc6fc6e">
+<h3 id="orgcc6fc6e">Advantages</h3>
 <ul>
 <li>few new concepts to learn</li>
 <li>keeps complexity of code base down</li>
 <li>no lock in effect
 <ul>
 <li>easy to swap neural net with any sklearn estimator</li>
-<li>easy to extract torch module and use it without skorch</li>
+<li>easy to extract PyTorch module and use it without skorch</li>
 
 </ul></li>
 
@@ -5687,88 +5687,88 @@ REREREQkBjQBFxEREREREYkBTcBFREREREREYkATcBEREREREZEY0ARcREREREREJAb+P8qnDmOF
 </section>
 </section>
 <section>
-<section id="slide-orga4d836d">
-<h2 id="orga4d836d">Reduction of boilerplate code</h2>
-<div class="outline-text-2" id="text-orga4d836d">
+<section id="slide-org3134b2e">
+<h2 id="org3134b2e">Reduction of boilerplate code</h2>
+<div class="outline-text-2" id="text-org3134b2e">
 </div>
 </section>
-<section id="slide-org325d085">
-<h3 id="org325d085">pure PyTorch</h3>
+<section id="slide-org66b26cd">
+<h3 id="org66b26cd">pure PyTorch</h3>
 <div style="font-size: 50%;">
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>torch
-<span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>torch<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>nn
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>torch
+<span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>torch<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>nn
 
-DEVICE<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">'cuda'</span>
+DEVICE<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">'cuda'</span>
 
-<span style="color: #F0DFAF; font-weight: bold;">class</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7CB8BB;">MyModule</span>(nn.Module):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #5F7F5F;">#</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">your</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">normal</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">module</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">code</span>
+<span style="color: #859900; font-weight: bold;">class</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #b58900; font-weight: bold;">MyModule</span>(nn.Module):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">your</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">normal</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">module</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">code</span>
 
-ds_train<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>TensorDataset(torch.from_numpy(X_train),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>torch.from_numpy(y_train))
-loader_train<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>DataLoader(ds_train,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>batch_size=256,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>shuffle=<span style="color: #F0DFAF; font-weight: bold;">True</span>)
-ds_valid<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>TensorDataset(torch.from_numpy(X_valid),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>torch.from_numpy(y_valid))
-loader_valid<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>DataLoader(ds_valid,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>batch_size=256)
-module<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>MyModule().to(DEVICE)
-optimizer<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>torch.optim.SGD(module.parameters(),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>lr=0.02)
-criterion<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>nn.NLLLoss()
-template<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">"epoch:</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">{}</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">|</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">loss</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">train:</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">{:.4f}</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">|</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">loss</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">valid:</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">{:.4f}</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">|</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">acc</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">valid:</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">{:.4f}</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">|</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">dur:</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">{:.3f}"</span>
+ds_train<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>TensorDataset(torch.from_numpy(X_train),<span style="color: #93a1a1; font-style: italic;"> </span>torch.from_numpy(y_train))
+loader_train<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>DataLoader(ds_train,<span style="color: #93a1a1; font-style: italic;"> </span>batch_size=256,<span style="color: #93a1a1; font-style: italic;"> </span>shuffle=<span style="color: #859900; font-weight: bold;">True</span>)
+ds_valid<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>TensorDataset(torch.from_numpy(X_valid),<span style="color: #93a1a1; font-style: italic;"> </span>torch.from_numpy(y_valid))
+loader_valid<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>DataLoader(ds_valid,<span style="color: #93a1a1; font-style: italic;"> </span>batch_size=256)
+module<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>MyModule().to(DEVICE)
+optimizer<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>torch.optim.SGD(module.parameters(),<span style="color: #93a1a1; font-style: italic;"> </span>lr=0.02)
+criterion<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>nn.NLLLoss()
+template<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">"epoch:</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">{}</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">|</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">loss</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">train:</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">{:.4f}</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">|</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">loss</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">valid:</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">{:.4f}</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">|</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">acc</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">valid:</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">{:.4f}</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">|</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">dur:</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">{:.3f}"</span>
 
-<span style="color: #F0DFAF; font-weight: bold;">for</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>epoch<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">in</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">range</span>(20):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>tic<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>time.time()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>losses_train<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>[]
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">for</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Xb,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yb<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">in</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>loader_train:
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>Xb,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yb<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Xb.to(DEVICE),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yb.to(DEVICE)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>y_proba<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>module(Xb)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>loss<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>criterion(torch.log(y_proba),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yb)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>loss.backward()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>optimizer.step()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>optimizer.zero_grad()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>losses_train.append(loss.item())
+<span style="color: #859900; font-weight: bold;">for</span><span style="color: #93a1a1; font-style: italic;"> </span>epoch<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">in</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">range</span>(20):
+<span style="color: #93a1a1; font-style: italic;">    </span>tic<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>time.time()
+<span style="color: #93a1a1; font-style: italic;">    </span>losses_train<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>[]
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">for</span><span style="color: #93a1a1; font-style: italic;"> </span>Xb,<span style="color: #93a1a1; font-style: italic;"> </span>yb<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">in</span><span style="color: #93a1a1; font-style: italic;"> </span>loader_train:
+<span style="color: #93a1a1; font-style: italic;">        </span>Xb,<span style="color: #93a1a1; font-style: italic;"> </span>yb<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>Xb.to(DEVICE),<span style="color: #93a1a1; font-style: italic;"> </span>yb.to(DEVICE)
+<span style="color: #93a1a1; font-style: italic;">        </span>y_proba<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>module(Xb)
+<span style="color: #93a1a1; font-style: italic;">        </span>loss<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>criterion(torch.log(y_proba),<span style="color: #93a1a1; font-style: italic;"> </span>yb)
+<span style="color: #93a1a1; font-style: italic;">        </span>loss.backward()
+<span style="color: #93a1a1; font-style: italic;">        </span>optimizer.step()
+<span style="color: #93a1a1; font-style: italic;">        </span>optimizer.zero_grad()
+<span style="color: #93a1a1; font-style: italic;">        </span>losses_train.append(loss.item())
 
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>losses_valid<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>[]
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>accuracy_valid<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>[]
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">for</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Xb,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yb<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">in</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>loader_valid:
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>Xb,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yb<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Xb.to(DEVICE),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yb.to(DEVICE)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>y_proba<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>module(Xb)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>loss<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>criterion(torch.log(y_proba),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yb)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>optimizer.step()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>optimizer.zero_grad()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>losses_valid.append(loss.item())
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>accuracy_valid.append(accuracy_score(yb.cpu().numpy(),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y_proba.argmax(1).cpu().numpy()))
+<span style="color: #93a1a1; font-style: italic;">    </span>losses_valid<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>[]
+<span style="color: #93a1a1; font-style: italic;">    </span>accuracy_valid<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>[]
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">for</span><span style="color: #93a1a1; font-style: italic;"> </span>Xb,<span style="color: #93a1a1; font-style: italic;"> </span>yb<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">in</span><span style="color: #93a1a1; font-style: italic;"> </span>loader_valid:
+<span style="color: #93a1a1; font-style: italic;">        </span>Xb,<span style="color: #93a1a1; font-style: italic;"> </span>yb<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>Xb.to(DEVICE),<span style="color: #93a1a1; font-style: italic;"> </span>yb.to(DEVICE)
+<span style="color: #93a1a1; font-style: italic;">        </span>y_proba<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>module(Xb)
+<span style="color: #93a1a1; font-style: italic;">        </span>loss<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>criterion(torch.log(y_proba),<span style="color: #93a1a1; font-style: italic;"> </span>yb)
+<span style="color: #93a1a1; font-style: italic;">        </span>optimizer.step()
+<span style="color: #93a1a1; font-style: italic;">        </span>optimizer.zero_grad()
+<span style="color: #93a1a1; font-style: italic;">        </span>losses_valid.append(loss.item())
+<span style="color: #93a1a1; font-style: italic;">        </span>accuracy_valid.append(accuracy_score(yb.cpu().numpy(),<span style="color: #93a1a1; font-style: italic;"> </span>y_proba.argmax(1).cpu().numpy()))
 
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>toc<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>time.time()<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>-<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>tic
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">print</span>(template.format(
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>epoch<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>+<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>1,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>np.mean(losses_train),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>np.mean(losses_valid),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>np.mean(accuracy_valid),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>toc))
+<span style="color: #93a1a1; font-style: italic;">    </span>toc<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>time.time()<span style="color: #93a1a1; font-style: italic;"> </span>-<span style="color: #93a1a1; font-style: italic;"> </span>tic
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">print</span>(template.format(
+<span style="color: #93a1a1; font-style: italic;">        </span>epoch<span style="color: #93a1a1; font-style: italic;"> </span>+<span style="color: #93a1a1; font-style: italic;"> </span>1,<span style="color: #93a1a1; font-style: italic;"> </span>np.mean(losses_train),<span style="color: #93a1a1; font-style: italic;"> </span>np.mean(losses_valid),<span style="color: #93a1a1; font-style: italic;"> </span>np.mean(accuracy_valid),<span style="color: #93a1a1; font-style: italic;"> </span>toc))
 </pre>
 </div>
 </div>
 </section>
-<section id="slide-org380f324">
-<h3 id="org380f324">same in skorch</h3>
+<section id="slide-org4f58936">
+<h3 id="org4f58936">same in skorch</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>torch<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>nn
-<span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>skorch<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>NeuralNetClassifier
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>torch<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>nn
+<span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>skorch<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>NeuralNetClassifier
 
-<span style="color: #F0DFAF; font-weight: bold;">class</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7CB8BB;">MyModule</span>(nn.Module):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #5F7F5F;">#</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">your</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">normal</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">module</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">code</span>
+<span style="color: #859900; font-weight: bold;">class</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #b58900; font-weight: bold;">MyModule</span>(nn.Module):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">your</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">normal</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">module</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">code</span>
 
-net<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>NeuralNetClassifier(
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>MyModule,
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>module__num_units=50,
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>max_epochs=20,
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>lr=0.02,
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>batch_size=256,
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>iterator_train__shuffle=<span style="color: #F0DFAF; font-weight: bold;">True</span>,
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>device=<span style="color: #CC9393;">'cuda'</span>,
+net<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>NeuralNetClassifier(
+<span style="color: #93a1a1; font-style: italic;">    </span>MyModule,
+<span style="color: #93a1a1; font-style: italic;">    </span>module__num_units=50,
+<span style="color: #93a1a1; font-style: italic;">    </span>max_epochs=20,
+<span style="color: #93a1a1; font-style: italic;">    </span>lr=0.02,
+<span style="color: #93a1a1; font-style: italic;">    </span>batch_size=256,
+<span style="color: #93a1a1; font-style: italic;">    </span>iterator_train__shuffle=<span style="color: #859900; font-weight: bold;">True</span>,
+<span style="color: #93a1a1; font-style: italic;">    </span>device=<span style="color: #2aa198;">'cuda'</span>,
 )
-net.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+net.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 </pre>
 </div>
 </section>
-<section id="slide-orgda07f4b">
-<h3 id="orgda07f4b">useful print log</h3>
+<section id="slide-org9b25af4">
+<h3 id="org9b25af4">useful print log</h3>
 
 <div class="figure">
 <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdMAAAGnCAYAAADsTb16AAAABHNCSVQICAgIfAhkiAAAABl0RVh0
@@ -6523,28 +6523,28 @@ wzCMSP4/OqwyS4T1fM0AAAAASUVORK5CYII=" width="400px" />
 </section>
 </section>
 <section>
-<section id="slide-orga9d8367">
-<h2 id="orga9d8367">sklearn compatibility</h2>
-<div class="outline-text-2" id="text-orga9d8367">
+<section id="slide-org29c9707">
+<h2 id="org29c9707">sklearn compatibility</h2>
+<div class="outline-text-2" id="text-org29c9707">
 </div>
 </section>
-<section id="slide-org89f82f4">
-<h3 id="org89f82f4">Monitor any sklearn metric</h3>
+<section id="slide-org3848258">
+<h3 id="org3848258">Monitor any sklearn metric</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>skorch.callbacks<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>EpochScoring
-<span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>sklearn.metrics<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>roc_auc_score
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>skorch.callbacks<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>EpochScoring
+<span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>sklearn.metrics<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>roc_auc_score
 
-auc<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>EpochScoring(
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>scoring=roc_auc_score,<span style="color: #4F4F4F; background-color: #4F4F4F;">  </span><span style="color: #5F7F5F;">#</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">&lt;--</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">just</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">passing</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">'roc_auc'</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">would</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">also</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">work</span>
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>lower_is_better=<span style="color: #F0DFAF; font-weight: bold;">False</span>,
+auc<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>EpochScoring(
+<span style="color: #93a1a1; font-style: italic;">    </span>scoring=roc_auc_score,<span style="color: #93a1a1; font-style: italic;">  </span><span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">&lt;--</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">just</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">passing</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">'roc_auc'</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">would</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">also</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">work</span>
+<span style="color: #93a1a1; font-style: italic;">    </span>lower_is_better=<span style="color: #859900; font-weight: bold;">False</span>,
 )
 
-net<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>NeuralNetClassifier(
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>...
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>callbacks=[auc],
+net<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>NeuralNetClassifier(
+<span style="color: #93a1a1; font-style: italic;">    </span>...
+<span style="color: #93a1a1; font-style: italic;">    </span>callbacks=[auc],
 )
-net.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+net.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 </pre>
 </div>
 <p>
@@ -6552,92 +6552,92 @@ Use any of the dozens of metrics that sklearn offers or easily write
 your own scoring functions.
 </p>
 </section>
-<section id="slide-org546e566">
-<h3 id="org546e566">full sklearn API</h3>
+<section id="slide-org86542ea">
+<h3 id="org86542ea">full sklearn API</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>sklearn.base<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>clone
-<span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>sklearn.model_selection<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>cross_validate
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>sklearn.base<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>clone
+<span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>sklearn.model_selection<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>cross_validate
 
-net.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+net.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 net.predict(X)
 net.predict_proba(X)
 net.get_params()
 net.set_params(...)
 clone(net)
-cross_validate(net,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+cross_validate(net,<span style="color: #93a1a1; font-style: italic;"> </span>X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 ...
 </pre>
 </div>
 </section>
-<section id="slide-orgd867a51">
-<h3 id="orgd867a51">sklearn Pipelines</h3>
+<section id="slide-orgbbcc25e">
+<h3 id="orgbbcc25e">sklearn Pipelines</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>sklearn.pipeline<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Pipeline
-<span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>sklearn.preprocessing<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>StandardScaler
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>sklearn.pipeline<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>Pipeline
+<span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>sklearn.preprocessing<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>StandardScaler
 
-pipe<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Pipeline([
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>(<span style="color: #CC9393;">'scale'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>StandardScaler()),
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>(<span style="color: #CC9393;">'net'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>net),
+pipe<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>Pipeline([
+<span style="color: #93a1a1; font-style: italic;">    </span>(<span style="color: #2aa198;">'scale'</span>,<span style="color: #93a1a1; font-style: italic;"> </span>StandardScaler()),
+<span style="color: #93a1a1; font-style: italic;">    </span>(<span style="color: #2aa198;">'net'</span>,<span style="color: #93a1a1; font-style: italic;"> </span>net),
 ])
 
-pipe.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
-y_pred<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>pipe.predict(X)
-y_proba<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>pipe.predict_proba(X)
+pipe.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
+y_pred<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>pipe.predict(X)
+y_proba<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>pipe.predict_proba(X)
 </pre>
 </div>
 </section>
-<section id="slide-org745fbc0">
-<h3 id="org745fbc0">supports pickling</h3>
+<section id="slide-org5d95d74">
+<h3 id="org5d95d74">supports pickling</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>pickle
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>pickle
 
-pipe<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Pipeline([
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>(<span style="color: #CC9393;">'scale'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>StandardScaler()),
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>(<span style="color: #CC9393;">'net'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>net),
+pipe<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>Pipeline([
+<span style="color: #93a1a1; font-style: italic;">    </span>(<span style="color: #2aa198;">'scale'</span>,<span style="color: #93a1a1; font-style: italic;"> </span>StandardScaler()),
+<span style="color: #93a1a1; font-style: italic;">    </span>(<span style="color: #2aa198;">'net'</span>,<span style="color: #93a1a1; font-style: italic;"> </span>net),
 ])
 
-pipe.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+pipe.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 
-<span style="color: #F0DFAF; font-weight: bold;">with</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">open</span>(<span style="color: #CC9393;">'my_pipeline.pickle'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">'wb'</span>)<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">as</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>f:
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>pickle.dump(pipe,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>f)
+<span style="color: #859900; font-weight: bold;">with</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">open</span>(<span style="color: #2aa198;">'my_pipeline.pickle'</span>,<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">'wb'</span>)<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">as</span><span style="color: #93a1a1; font-style: italic;"> </span>f:
+<span style="color: #93a1a1; font-style: italic;">    </span>pickle.dump(pipe,<span style="color: #93a1a1; font-style: italic;"> </span>f)
 </pre>
 </div>
 <p>
 Training on GPU, loading on CPU is no problem.
 </p>
 </section>
-<section id="slide-org8e3030d">
-<h3 id="org8e3030d">GridSearchCV et al.</h3>
+<section id="slide-org8cdf93f">
+<h3 id="org8cdf93f">GridSearchCV et al.</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>sklearn.model_selection<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>GridSearchCV
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>sklearn.model_selection<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>GridSearchCV
 
-<span style="color: #F0DFAF; font-weight: bold;">class</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7CB8BB;">MyModule</span>(nn.Module):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>num_units=10,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>dropout=0.5):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">super</span>().__init__()
+<span style="color: #859900; font-weight: bold;">class</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #b58900; font-weight: bold;">MyModule</span>(nn.Module):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">__init__</span>(<span style="color: #859900; font-weight: bold;">self</span>,<span style="color: #93a1a1; font-style: italic;"> </span>num_units=10,<span style="color: #93a1a1; font-style: italic;"> </span>dropout=0.5):
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">super</span>().__init__()
 
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.dense<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>nn.Linear(20,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>num_units)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.dropout<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>nn.Dropout(dropout)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.output<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>nn.Linear(num_units,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>2)
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">self</span>.dense<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>nn.Linear(20,<span style="color: #93a1a1; font-style: italic;"> </span>num_units)
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">self</span>.dropout<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>nn.Dropout(dropout)
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">self</span>.output<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>nn.Linear(num_units,<span style="color: #93a1a1; font-style: italic;"> </span>2)
 
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">forward</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>**kwargs):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>...
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">forward</span>(<span style="color: #859900; font-weight: bold;">self</span>,<span style="color: #93a1a1; font-style: italic;"> </span>X,<span style="color: #93a1a1; font-style: italic;"> </span>**kwargs):
+<span style="color: #93a1a1; font-style: italic;">        </span>...
 
-params<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>{
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #CC9393;">'lr'</span>:<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>[0.05,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>0.1],
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #CC9393;">'optimizer__momentum'</span>:<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>[0.0,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>0.9],
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #CC9393;">'module__num_units'</span>:<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>[10,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>20,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>50],
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #CC9393;">'module__dropout'</span>:<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>[0,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>0.5],
+params<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>{
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #2aa198;">'max_epochs'</span>:<span style="color: #93a1a1; font-style: italic;"> </span>[10,<span style="color: #93a1a1; font-style: italic;"> </span>20],
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #2aa198;">'optimizer__momentum'</span>:<span style="color: #93a1a1; font-style: italic;"> </span>[0.0,<span style="color: #93a1a1; font-style: italic;"> </span>0.9],
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #2aa198;">'module__num_units'</span>:<span style="color: #93a1a1; font-style: italic;"> </span>[10,<span style="color: #93a1a1; font-style: italic;"> </span>20,<span style="color: #93a1a1; font-style: italic;"> </span>50],
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #2aa198;">'module__dropout'</span>:<span style="color: #93a1a1; font-style: italic;"> </span>[0,<span style="color: #93a1a1; font-style: italic;"> </span>0.5],
 }
-search<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>GridSearchCV(net,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>params).fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+search<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>GridSearchCV(net,<span style="color: #93a1a1; font-style: italic;"> </span>params).fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 </pre>
 </div>
 </section>
-<section id="slide-org6832abb">
-<h3 id="org6832abb">Grid search everything!</h3>
+<section id="slide-org3e77026">
+<h3 id="org3e77026">Grid search everything!</h3>
 <p>
 You can grid search the parameters of almost everything:
 </p>
@@ -6685,68 +6685,69 @@ You can grid search the parameters of almost everything:
 
 <tr>
 <td class="org-left"><code>callbacks</code></td>
-<td class="org-left"><code>valid_acc__on_train, mycb__any_parameter</code></td>
+<td class="org-left"><code>callbacks__print_log__sink, callbacks__mycallback__any_parameter</code></td>
 </tr>
 </tbody>
 </table>
 </div>
 </section>
-<section id="slide-org0f5e659">
-<h3 id="org0f5e659">swap out skorch estimator with any sklearn estimator</h3>
+<section id="slide-org29830b3">
+<h3 id="org29830b3">swap out skorch estimator with any sklearn estimator</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>sklearn.linear_model<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>LogisticRegression
-<span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>sklearn.neighbors<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>KNeighborsClassifier
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>sklearn.linear_model<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>LogisticRegression
+<span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>sklearn.neighbors<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>KNeighborsClassifier
 
-pipe<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Pipeline([
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>(<span style="color: #CC9393;">'scale'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>StandardScaler()),
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>(<span style="color: #CC9393;">'model'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>net),
+pipe<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>Pipeline([
+<span style="color: #93a1a1; font-style: italic;">    </span>(<span style="color: #2aa198;">'scale'</span>,<span style="color: #93a1a1; font-style: italic;"> </span>StandardScaler()),
+<span style="color: #93a1a1; font-style: italic;">    </span>(<span style="color: #2aa198;">'model'</span>,<span style="color: #93a1a1; font-style: italic;"> </span>net),
 ])
-params<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>{<span style="color: #CC9393;">'model'</span>:<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>[net,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>LogisticRegression(),<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>KNeighborsClassifier()]}
-search<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>GridSearchCV(pipe,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>params)
-search.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+params<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>{<span style="color: #2aa198;">'model'</span>:<span style="color: #93a1a1; font-style: italic;"> </span>[net,<span style="color: #93a1a1; font-style: italic;"> </span>LogisticRegression(),<span style="color: #93a1a1; font-style: italic;"> </span>KNeighborsClassifier()]}
+search<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>GridSearchCV(pipe,<span style="color: #93a1a1; font-style: italic;"> </span>params)
+search.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 </pre>
 </div>
 </section>
-<section id="slide-org8110551">
-<h3 id="org8110551">distributed GridSearchCV</h3>
+<section id="slide-org9792486">
+<h3 id="org9792486">distributed GridSearchCV</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>dask.distributed<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Client
-<span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>joblib<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>parallel_backend
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>dask.distributed<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>Client
+<span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>joblib<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>parallel_backend
 
-client<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Client(<span style="color: #CC9393;">'127.0.0.1:8786'</span>)
+client<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>Client(<span style="color: #2aa198;">'127.0.0.1:8786'</span>)
 
-search<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>GridSearchCV(...)
-<span style="color: #F0DFAF; font-weight: bold;">with</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>parallel_backend(<span style="color: #CC9393;">'dask'</span>):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>search.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+search<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>GridSearchCV(...)
+<span style="color: #859900; font-weight: bold;">with</span><span style="color: #93a1a1; font-style: italic;"> </span>parallel_backend(<span style="color: #2aa198;">'dask'</span>):
+<span style="color: #93a1a1; font-style: italic;">    </span>search.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgaa43c44">
-<h2 id="orgaa43c44">Many more additions</h2>
-<div class="outline-text-2" id="text-orgaa43c44">
+<section id="slide-orge24dc32">
+<h2 id="orge24dc32">Many more additions</h2>
+<div class="outline-text-2" id="text-orge24dc32">
 </div>
 </section>
-<section id="slide-orgbf6548e">
-<h3 id="orgbf6548e">Save state dict for better compatibility</h3>
+<section id="slide-org3f0d9f5">
+<h3 id="org3f0d9f5">Save state dict for better compatibility</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>skorch.callbacks<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Checkpoint
-cp<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Checkpoint(monitor=<span style="color: #CC9393;">'valid_loss_best'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>dirname=<span style="color: #CC9393;">'exp1'</span>)
-net<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>NeuralNetClassifier(...,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>callbacks=[cp])
-net.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)<span style="color: #4F4F4F; background-color: #4F4F4F;">  </span><span style="color: #5F7F5F;">#</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">Checkpoint</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">saves</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">each</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">time</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">valid</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">lost</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">improves</span>
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>skorch.callbacks<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>Checkpoint
+
+cp<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>Checkpoint(monitor=<span style="color: #2aa198;">'valid_loss_best'</span>,<span style="color: #93a1a1; font-style: italic;"> </span>dirname=<span style="color: #2aa198;">'exp1'</span>)
+net<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>NeuralNetClassifier(...,<span style="color: #93a1a1; font-style: italic;"> </span>callbacks=[cp])
+net.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)<span style="color: #93a1a1; font-style: italic;">  </span><span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">Checkpoint</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">saves</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">each</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">time</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">valid</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">lost</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">improves</span>
 net.save_params(
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>f_params=<span style="color: #CC9393;">'exp1/mynet.pt'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;">  </span><span style="color: #5F7F5F;">#</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">&lt;-</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">state</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">dict</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">of</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">module</span>
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>f_optimizer=<span style="color: #CC9393;">'exp1/myoptimizer.pt'</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;">  </span><span style="color: #5F7F5F;">#</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">&lt;-</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">state</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">dict</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">of</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">optimizer</span>
+<span style="color: #93a1a1; font-style: italic;">    </span>f_params=<span style="color: #2aa198;">'exp1/mynet.pt'</span>,<span style="color: #93a1a1; font-style: italic;">  </span><span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">&lt;-</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">state</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">dict</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">of</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">module</span>
+<span style="color: #93a1a1; font-style: italic;">    </span>f_optimizer=<span style="color: #2aa198;">'exp1/myoptimizer.pt'</span>,<span style="color: #93a1a1; font-style: italic;">  </span><span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">&lt;-</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">state</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">dict</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">of</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">optimizer</span>
 )
 </pre>
 </div>
 </section>
-<section id="slide-org2b62695">
-<h3 id="org2b62695">Handling of different data formats</h3>
+<section id="slide-org1579b5a">
+<h3 id="org1579b5a">Handling of different data formats</h3>
 <ul>
 <li>numpy arrays</li>
 <li>PyTorch Datasets (most)</li>
@@ -6756,8 +6757,8 @@ net.save_params(
 
 </ul>
 </section>
-<section id="slide-org7ce71c3">
-<h3 id="org7ce71c3">Callbacks</h3>
+<section id="slide-orgcfe2974">
+<h3 id="orgcfe2974">Callbacks</h3>
 <ul>
 <li>learning rate schedulers</li>
 <li>scoring functions (support for custom or sklearn metrics)</li>
@@ -6769,34 +6770,29 @@ net.save_params(
 
 </ul>
 </section>
-<section id="slide-org3b7a435">
-<h3 id="org3b7a435">Helper for command line usage</h3>
-<div class="outline-text-3" id="text-org3b7a435">
+<section id="slide-org17353c3">
+<h3 id="org17353c3">Helper for command line usage</h3>
+<div class="outline-text-3" id="text-org17353c3">
 </div>
 </section>
-<section id="slide-org7442178">
-<h4 id="org7442178">Extend training script with a few lines to transform it into a useful CLI</h4>
+<section id="slide-orga7d17b2">
+<h4 id="orga7d17b2">Extend training script with a few lines to transform it into a useful CLI</h4>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>fire
-<span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>skorch.helper<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>parse_args
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>fire
+<span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>skorch.helper<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>parse_args
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">get_data</span>():
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>...
-<span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">get_model</span>():
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">class</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7CB8BB;">MyModule</span>(nn.Module):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>...
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">return</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>NeuralNetClassifier(MyModule,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>...)
+<span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">training</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">code</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">goes</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">here</span>
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">main</span>(**kwargs):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>get_data()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>my_model<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>get_model()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #5F7F5F;">#</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">important:</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">wrap</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">the</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">model</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">with</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">the</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">parsed</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">arguments</span>
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>my_model<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>parse_args(kwargs)(my_model)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>my_model.fit(X,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>y)
+<span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">main</span>(**kwargs):
+<span style="color: #93a1a1; font-style: italic;">    </span>X,<span style="color: #93a1a1; font-style: italic;"> </span>y<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>...
+<span style="color: #93a1a1; font-style: italic;">    </span>model<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>NeuralNetClassifier(...)
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">important:</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">wrap</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">the</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">model</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">with</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">the</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">parsed</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">arguments</span>
+<span style="color: #93a1a1; font-style: italic;">    </span>model<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>parse_args(kwargs)(model)
+<span style="color: #93a1a1; font-style: italic;">    </span>model.fit(X,<span style="color: #93a1a1; font-style: italic;"> </span>y)
 
-<span style="color: #F0DFAF; font-weight: bold;">if</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>__name__<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>==<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">'__main__'</span>:
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>fire.Fire(main)
+<span style="color: #859900; font-weight: bold;">if</span><span style="color: #93a1a1; font-style: italic;"> </span>__name__<span style="color: #93a1a1; font-style: italic;"> </span>==<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">'__main__'</span>:
+<span style="color: #93a1a1; font-style: italic;">    </span>fire.Fire(main)
 </pre>
 </div>
 <p>
@@ -6804,128 +6800,133 @@ No longer write dozen of lines of argument parsing and still forget
 half of the arguments.
 </p>
 </section>
-<section id="slide-org919f322">
-<h4 id="org919f322">Get help for free</h4>
+<section id="slide-org7fae766">
+<h4 id="org7fae766">Get help for free</h4>
 <div class="org-src-container">
 
 <pre  class="src src-shell">$ python train.py --help
 &lt;NeuralNetClassifier&gt; options:
   --module : torch module (class or instance)
-    A PyTorch :class:<span style="color: #CC9393;">`~torch.nn.Module`</span><span style="color: #DCDCCC; font-weight: bold;">.</span> In general, the
+    A PyTorch :class:<span style="color: #6c71c4; font-weight: bold;">`~torch.nn.Module`</span><span style="color: #657b83; font-weight: bold;">.</span> In general, the
     uninstantiated class should be passed, although instantiated
     modules will also work.
-  --criterion : torch criterion (class, <span style="color: #DFAF8F;">default</span>=torch.nn.NLLLoss)
+  --criterion : torch criterion (class, <span style="color: #268bd2;">default</span>=torch.nn.NLLLoss)
     Negative log likelihood loss. Note that the module should return
-    probabilities, the log is applied during <span style="color: #CC9393;">``</span>get_loss<span style="color: #CC9393;">``</span><span style="color: #DCDCCC; font-weight: bold;">.</span>
-  --optimizer : torch optim (class, <span style="color: #DFAF8F;">default</span>=torch.optim.SGD)
+    probabilities, the log is applied during <span style="color: #6c71c4; font-weight: bold;">``</span>get_loss<span style="color: #6c71c4; font-weight: bold;">``</span><span style="color: #657b83; font-weight: bold;">.</span>
+  --optimizer : torch optim (class, <span style="color: #268bd2;">default</span>=torch.optim.SGD)
     The uninitialized optimizer (update rule) used to optimize the
     module
-  --lr : float (<span style="color: #DFAF8F;">default</span>=0.01)
-    Learning rate passed to the optimizer. You may use <span style="color: #CC9393;">``</span>lr<span style="color: #CC9393;">``</span> instead
-    of using <span style="color: #CC9393;">``</span>optimizer__lr<span style="color: #CC9393;">``</span>, which would result<span style="color: #F0DFAF; font-weight: bold;"> in</span> the same outcome.
+  --lr : float (<span style="color: #268bd2;">default</span>=0.01)
+    Learning rate passed to the optimizer. You may use <span style="color: #6c71c4; font-weight: bold;">``</span>lr<span style="color: #6c71c4; font-weight: bold;">``</span> instead
+    of using <span style="color: #6c71c4; font-weight: bold;">``</span>optimizer__lr<span style="color: #6c71c4; font-weight: bold;">``</span>, which would result<span style="color: #859900; font-weight: bold;"> in</span> the same outcome.
   ...
 
 &lt;MyModule&gt; options:
-  --module__hidden_units : int (<span style="color: #DFAF8F;">default</span>=30)
-    Number of units<span style="color: #F0DFAF; font-weight: bold;"> in</span> hidden layers.
-  --module__nonlin : torch.nn.Module instance (<span style="color: #DFAF8F;">default</span>=torch.nn.ReLU())
+  --module__hidden_units : int (<span style="color: #268bd2;">default</span>=30)
+    Number of units<span style="color: #859900; font-weight: bold;"> in</span> hidden layers.
+  --module__nonlin : torch.nn.Module instance (<span style="color: #268bd2;">default</span>=torch.nn.ReLU())
     Non-linearity to apply after hidden layers.
   ...
 </pre>
 </div>
 </section>
-<section id="slide-org89dd5e4">
-<h4 id="org89dd5e4">All parameters can now be accessed from the command line</h4>
+<section id="slide-org8d40827">
+<h4 id="org8d40827">All parameters can now be accessed from the command line</h4>
 <div class="org-src-container">
 
-<pre  class="src src-shell">$ python train.py --lr 0.1 --max_epochs 5 --device <span style="color: #CC9393;">'cuda'</span> <span style="color: #CC9393;">\</span>
-  --module__hidden_units 50 --module__nonlin <span style="color: #CC9393;">'torch.nn.RReLU(0.1, upper=0.4)'</span> <span style="color: #CC9393;">\</span>
-  --callbacks__valid_acc__on_train --callbacks__valid_acc__name <span style="color: #CC9393;">'new_name'</span>
+<pre  class="src src-shell">$ python train.py --lr 0.1 --max_epochs 5 --device <span style="color: #2aa198;">'cuda'</span> <span style="color: #b58900; font-weight: bold;">\</span>
+  --module__hidden_units 50 --module__nonlin <span style="color: #2aa198;">'torch.nn.RReLU(0.1, upper=0.4)'</span> <span style="color: #b58900; font-weight: bold;">\</span>
+  --callbacks__valid_acc__on_train --callbacks__valid_acc__name <span style="color: #2aa198;">'new_name'</span>
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org447a901">
-<h2 id="org447a901">Easily hackable</h2>
-<div class="outline-text-2" id="text-org447a901">
+<section id="slide-orge68183d">
+<h2 id="orge68183d">Easily hackable</h2>
+<div class="outline-text-2" id="text-orge68183d">
 </div>
 </section>
-<section id="slide-org0a8f820">
-<h3 id="org0a8f820">Methods designed for easy overriding</h3>
+<section id="slide-orgf7ec60b">
+<h3 id="orgf7ec60b">Methods designed for easy overriding</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">class</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7CB8BB;">MyNet</span>(NeuralNet):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">get_loss</span>(...):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">get_iterator</span>(...):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">train_step</span>(...):
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">class</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #b58900; font-weight: bold;">MyNet</span>(NeuralNet):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">get_loss</span>(...):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">get_iterator</span>(...):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">train_step</span>(...):
 
-<span style="color: #F0DFAF; font-weight: bold;">class</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7CB8BB;">MyCallback</span>(Callback):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">on_train_begin</span>(...):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">on_epoch_begin</span>(...):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">on_batch_end</span>(...)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">on_grad_computed</span>(...):
+<span style="color: #859900; font-weight: bold;">class</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #b58900; font-weight: bold;">MyCallback</span>(Callback):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">on_train_begin</span>(...):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">on_epoch_begin</span>(...):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">on_batch_end</span>(...)
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">on_grad_computed</span>(...):
 </pre>
 </div>
 </section>
-<section id="slide-org1c1c08d">
-<h3 id="org1c1c08d">Example: write your own callback</h3>
+<section id="slide-org14dadf0">
+<h3 id="org14dadf0">Example: write your own callback</h3>
 <p>
 After training ends, send a tweet with best validation accuracy
 </p>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">from</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>skorch.callbacks<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">import</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Callback
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">from</span><span style="color: #93a1a1; font-style: italic;"> </span>skorch.callbacks<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">import</span><span style="color: #93a1a1; font-style: italic;"> </span>Callback
 
-<span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">send_tweet</span>(msg):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span>...
+<span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">send_tweet</span>(msg):
+<span style="color: #93a1a1; font-style: italic;">    </span>...
 
-<span style="color: #F0DFAF; font-weight: bold;">class</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7CB8BB;">TweetAccuracy</span>(Callback):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>min_accuracy=0.99):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.min_accuracy<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>min_accuracy
+<span style="color: #859900; font-weight: bold;">class</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #b58900; font-weight: bold;">TweetAccuracy</span>(Callback):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">__init__</span>(<span style="color: #859900; font-weight: bold;">self</span>,<span style="color: #93a1a1; font-style: italic;"> </span>min_accuracy=0.99):
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">self</span>.min_accuracy<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>min_accuracy
 
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">on_train_end</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>net,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>**kwargs):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>best_accuracy<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">max</span>(net.history[:,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">'valid_acc'</span>])
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">if</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>best_accuracy<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>&gt;<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.min_accuracy:
-<span style="color: #4F4F4F; background-color: #4F4F4F;">            </span>msg<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">"Reached</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">an</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">accuracy</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">of</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">{:.4f}!!!"</span>.format(best_accuracy)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">            </span>send_tweet(msg)
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">on_train_end</span>(<span style="color: #859900; font-weight: bold;">self</span>,<span style="color: #93a1a1; font-style: italic;"> </span>net,<span style="color: #93a1a1; font-style: italic;"> </span>**kwargs):
+<span style="color: #93a1a1; font-style: italic;">        </span>best_accuracy<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">max</span>(net.history[:,<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">'valid_acc'</span>])
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">if</span><span style="color: #93a1a1; font-style: italic;"> </span>best_accuracy<span style="color: #93a1a1; font-style: italic;"> </span>&gt;<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">self</span>.min_accuracy:
+<span style="color: #93a1a1; font-style: italic;">            </span>msg<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">"Reached</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">an</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">accuracy</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">of</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">{:.4f}!!!"</span>.format(best_accuracy)
+<span style="color: #93a1a1; font-style: italic;">            </span>send_tweet(msg)
 </pre>
 </div>
 </section>
-<section id="slide-org3fd7876">
-<h3 id="org3fd7876">Example: implement gradient accumulation</h3>
+<section id="slide-org4b9d8b6">
+<h3 id="org4b9d8b6">Example: implement gradient accumulation</h3>
 <div class="org-src-container">
 
-<pre  class="src src-python"><span style="color: #F0DFAF; font-weight: bold;">class</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7CB8BB;">GradAccNet</span>(NeuralNetClassifier):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">__init__</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>*args,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>acc_steps=2,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>**kwargs):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">super</span>().__init__(*args,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>**kwargs)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.acc_steps<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>acc_steps
+<pre  class="src src-python"><span style="color: #859900; font-weight: bold;">class</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #b58900; font-weight: bold;">GradAccNet</span>(NeuralNetClassifier):
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">__init__</span>(<span style="color: #859900; font-weight: bold;">self</span>,<span style="color: #93a1a1; font-style: italic;"> </span>*args,<span style="color: #93a1a1; font-style: italic;"> </span>acc_steps=2,<span style="color: #93a1a1; font-style: italic;"> </span>**kwargs):
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">super</span>().__init__(*args,<span style="color: #93a1a1; font-style: italic;"> </span>**kwargs)
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">self</span>.acc_steps<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span>acc_steps
 
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">get_loss</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>*args,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>**kwargs):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>loss<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">super</span>().get_loss(*args,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>**kwargs)
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">return</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>loss<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>/<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.acc_steps<span style="color: #4F4F4F; background-color: #4F4F4F;">  </span><span style="color: #5F7F5F;">#</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">normalize</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #7F9F7F;">loss</span>
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">get_loss</span>(<span style="color: #859900; font-weight: bold;">self</span>,<span style="color: #93a1a1; font-style: italic;"> </span>*args,<span style="color: #93a1a1; font-style: italic;"> </span>**kwargs):
+<span style="color: #93a1a1; font-style: italic;">        </span>loss<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">super</span>().get_loss(*args,<span style="color: #93a1a1; font-style: italic;"> </span>**kwargs)
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">return</span><span style="color: #93a1a1; font-style: italic;"> </span>loss<span style="color: #93a1a1; font-style: italic;"> </span>/<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">self</span>.acc_steps<span style="color: #93a1a1; font-style: italic;">  </span><span style="color: #93a1a1; font-weight: bold;">#</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">normalize</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #93a1a1; font-style: italic;">loss</span>
 
-<span style="color: #4F4F4F; background-color: #4F4F4F;">    </span><span style="color: #F0DFAF; font-weight: bold;">def</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #93E0E3;">train_step</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>Xi,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yi,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>**fit_params):
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>n_train_batches<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">len</span>(<span style="color: #F0DFAF; font-weight: bold;">self</span>.history[-1,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #CC9393;">'batches'</span>])
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span>step<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>=<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.train_step_single(Xi,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>yi,<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>**fit_params)
+<span style="color: #93a1a1; font-style: italic;">    </span><span style="color: #859900; font-weight: bold;">def</span><span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #268bd2; font-size: 110%; font-weight: bold;">train_step</span>(<span style="color: #859900; font-weight: bold;">self</span>,<span style="color: #93a1a1; font-style: italic;"> </span>Xi,<span style="color: #93a1a1; font-style: italic;"> </span>yi,<span style="color: #93a1a1; font-style: italic;"> </span>**fit_params):
+<span style="color: #93a1a1; font-style: italic;">        </span>n_train_batches<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">len</span>(<span style="color: #859900; font-weight: bold;">self</span>.history[-1,<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #2aa198;">'batches'</span>])
+<span style="color: #93a1a1; font-style: italic;">        </span>step<span style="color: #93a1a1; font-style: italic;"> </span>=<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">self</span>.train_step_single(Xi,<span style="color: #93a1a1; font-style: italic;"> </span>yi,<span style="color: #93a1a1; font-style: italic;"> </span>**fit_params)
 
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">if</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>n_train_batches<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>%<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.acc_steps<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>==<span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>0:
-<span style="color: #4F4F4F; background-color: #4F4F4F;">            </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.optimizer_.step()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">            </span><span style="color: #F0DFAF; font-weight: bold;">self</span>.optimizer_.zero_grad()
-<span style="color: #4F4F4F; background-color: #4F4F4F;">        </span><span style="color: #F0DFAF; font-weight: bold;">return</span><span style="color: #4F4F4F; background-color: #4F4F4F;"> </span>step
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">if</span><span style="color: #93a1a1; font-style: italic;"> </span>n_train_batches<span style="color: #93a1a1; font-style: italic;"> </span>%<span style="color: #93a1a1; font-style: italic;"> </span><span style="color: #859900; font-weight: bold;">self</span>.acc_steps<span style="color: #93a1a1; font-style: italic;"> </span>==<span style="color: #93a1a1; font-style: italic;"> </span>0:
+<span style="color: #93a1a1; font-style: italic;">            </span><span style="color: #859900; font-weight: bold;">self</span>.optimizer_.step()
+<span style="color: #93a1a1; font-style: italic;">            </span><span style="color: #859900; font-weight: bold;">self</span>.optimizer_.zero_grad()
+<span style="color: #93a1a1; font-style: italic;">        </span><span style="color: #859900; font-weight: bold;">return</span><span style="color: #93a1a1; font-style: italic;"> </span>step
 </pre>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgd3d1aa2">
-<h2 id="orgd3d1aa2">Questions?</h2>
+<section id="slide-org45f5ec1">
+<h2 id="org45f5ec1">Questions?</h2>
 <p>
 skorch: <a href="https://github.com/skorch-dev/skorch">https://github.com/skorch-dev/skorch</a>
 </p>
+<hr />
+<div style="font-size: 65%;">
+<p>
+get the presentation here: <a href="https://git.io/JeC0C">https://git.io/JeC0C</a>
+</p>
 
 <p>
-contributors:
+main contributors:
 </p>
 <ul>
 <li><a href="https://github.com/ottonemo">ottonemo</a></li>
@@ -6934,9 +6935,16 @@ contributors:
 
 </ul>
 
+<hr />
+
 <p>
-get the presentation here: <a href="https://github.com/BenjaminBossan/public-presentations/tree/master/20191010-pycon-pydata">https://github.com/BenjaminBossan/public-presentations/tree/master/20191010-pycon-pydata</a>
+Open positions: <a href="https://jobs.newyorker.de">https://jobs.newyorker.de</a>
 </p>
+<ul>
+<li>Senior Data Scientist in Berlin</li>
+<li>Senior Python Software Developer in Berlin</li>
+
+</ul>
 
 
 <div class="figure">
@@ -8201,14 +8209,7 @@ HYOTKvHI/wAAAP//AwBhNArj2WT+OQAAAABJRU5ErkJggg==
 </p>
 </div>
 
-<p>
-Open positions: <a href="https://jobs.newyorker.de">https://jobs.newyorker.de</a>
-</p>
-<ul>
-<li>Senior Data Scientist in Berlin</li>
-<li>Senior Python Software Developer in Berlin</li>
-
-</ul>
+</div>
 </section>
 </section>
 </div>
