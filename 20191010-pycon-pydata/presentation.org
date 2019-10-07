@@ -1,9 +1,10 @@
-#+Title: skorch: A scikit-learn compatible neural network library that wraps pytorch
+#+Title: skorch: A scikit-learn compatible neural network library that wraps PyTorch
 #+Author: Benjamin Bossan
 #+OPTIONS: toc:nil
 #+REVEAL_TITLE_SLIDE: %t
 #+MACRO: color @@html:<font color="$1">$2</font>@@
 #+REVEAL_EXTRA_CSS: ./reveal.js/css/theme/league.css
+#+REVEAL_EXTRA_CSS: ./local.css
 #+OPTIONS: reveal_single_file:t
 #+OPTIONS: num:nil
 
@@ -11,39 +12,42 @@
 #+CAPTION:
 [[./assets/skorch_inv.svg]]
 * Introduction
+** About me
+- one of the contributors to [[https://github.com/skorch-dev/skorch][skorch]]
+- [[https://github.com/BenjaminBossan][BenjaminBossan]] on github
+- head of data science Berlin at NewYorker (fashion company, not magazine)
 ** Become a deep data scientist now!
 #+attr_html: :width 500px
 #+CAPTION:
 [[./assets/lecun_skorch.jpg]]
-** Basic facts
+** Basic facts 1
 #+attr_html: :width 800px
 #+CAPTION: Github page as of Sep 29, 2019
 [[./assets/skorch_github.png]]
-**
+** Basic facts 2
 #+attr_html: :width 400px
 #+CAPTION:
 [[./assets/some_facts.svg]]
 - mature: first commit July 2017
 - 3 main contributors
 - used in production
-- many examples and notebooks in repo
+- many [[https://github.com/skorch-dev/skorch/tree/master/examples][examples]] and [[https://github.com/skorch-dev/skorch/tree/master/notebooks][notebooks]] in repository
 - extensive docs: https://skorch.readthedocs.io
 ** Philosophy
 - sklearn API
-- don't hide PyTorch
 - hackable
+- don't hide PyTorch
 - don't reinvent the wheel
 ** Reuse existing concepts instead of reinventing the wheel
-#+attr_html: :width 400px
+#+attr_html: :width 350px
 #+CAPTION:
 [[./assets/skorch_torch_sklearn.svg]]
-**
-Advantages:
+** Advantages
 - few new concepts to learn
 - keeps complexity of code base down
 - no lock in effect
-  + easy to swap out neural net with any sklearn estimator
-  + easy to extract torch module and use it without skorch
+  + easy to swap neural net with any sklearn estimator
+  + easy to extract PyTorch module and use it without skorch
 * Reduction of boilerplate code
 ** pure PyTorch
 #+REVEAL_HTML: <div style="font-size: 50%;">
@@ -51,14 +55,16 @@ Advantages:
 import torch
 from torch import nn
 
+DEVICE = 'cuda'
+
 class MyModule(nn.Module):
     # your normal module code
 
-ds_train = torch.utils.data.TensorDataset(torch.from_numpy(X_train), torch.from_numpy(y_train))
-loader_train = torch.utils.data.DataLoader(ds_train, batch_size=256, shuffle=True)
-ds_valid = torch.utils.data.TensorDataset(torch.from_numpy(X_valid), torch.from_numpy(y_valid))
-loader_valid = torch.utils.data.DataLoader(ds_valid, batch_size=256)
-module = MyModule()
+ds_train = TensorDataset(torch.from_numpy(X_train), torch.from_numpy(y_train))
+loader_train = DataLoader(ds_train, batch_size=256, shuffle=True)
+ds_valid = TensorDataset(torch.from_numpy(X_valid), torch.from_numpy(y_valid))
+loader_valid = DataLoader(ds_valid, batch_size=256)
+module = MyModule().to(DEVICE)
 optimizer = torch.optim.SGD(module.parameters(), lr=0.02)
 criterion = nn.NLLLoss()
 template = "epoch: {} | loss train: {:.4f} | loss valid: {:.4f} | acc valid: {:.4f} | dur: {:.3f}"
@@ -67,23 +73,25 @@ for epoch in range(20):
     tic = time.time()
     losses_train = []
     for Xb, yb in loader_train:
+        Xb, yb = Xb.to(DEVICE), yb.to(DEVICE)
         y_proba = module(Xb)
         loss = criterion(torch.log(y_proba), yb)
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()
         losses_train.append(loss.item())
-
+        
     losses_valid = []
     accuracy_valid = []
     for Xb, yb in loader_valid:
+        Xb, yb = Xb.to(DEVICE), yb.to(DEVICE)
         y_proba = module(Xb)
         loss = criterion(torch.log(y_proba), yb)
         optimizer.step()
         optimizer.zero_grad()
         losses_valid.append(loss.item())
-        accuracy_valid.append(accuracy_score(yb.numpy(), y_proba.argmax(1).numpy()))
-
+        accuracy_valid.append(accuracy_score(yb.cpu().numpy(), y_proba.argmax(1).cpu().numpy()))
+        
     toc = time.time() - tic
     print(template.format(
         epoch + 1, np.mean(losses_train), np.mean(losses_valid), np.mean(accuracy_valid), toc))
@@ -113,7 +121,25 @@ net.fit(X, y)
 #+CAPTION:
 [[./assets/skorch_print_log.png]]
 * sklearn compatibility
-** API
+** Monitor any sklearn metric
+#+BEGIN_SRC python
+from skorch.callbacks import EpochScoring
+from sklearn.metrics import roc_auc_score
+
+auc = EpochScoring(
+    scoring=roc_auc_score,  # <-- just passing 'roc_auc' would also work
+    lower_is_better=False,
+)
+
+net = NeuralNetClassifier(
+    ...
+    callbacks=[auc],
+)
+net.fit(X, y)
+#+END_SRC
+Use any of the dozens of metrics that sklearn offers or easily write
+your own scoring functions.
+** full sklearn API
 #+BEGIN_SRC python
 from sklearn.base import clone
 from sklearn.model_selection import cross_validate
@@ -127,7 +153,7 @@ clone(net)
 cross_validate(net, X, y)
 ...
 #+END_SRC
-** Pipelines
+** sklearn Pipelines
 #+BEGIN_SRC python
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -141,8 +167,7 @@ pipe.fit(X, y)
 y_pred = pipe.predict(X)
 y_proba = pipe.predict_proba(X)
 #+END_SRC
-Training on GPU, loading on CPU is no problem.
-** pickling
+** supports pickling
 #+BEGIN_SRC python
 import pickle
 
@@ -156,6 +181,7 @@ pipe.fit(X, y)
 with open('my_pipeline.pickle', 'wb') as f:
     pickle.dump(pipe, f)
 #+END_SRC
+Training on GPU, loading on CPU is no problem.
 ** GridSearchCV et al.
 #+BEGIN_SRC python
 from sklearn.model_selection import GridSearchCV
@@ -172,7 +198,7 @@ class MyModule(nn.Module):
         ...
 
 params = {
-    'lr': [0.05, 0.1],
+    'max_epochs': [10, 20],
     'optimizer__momentum': [0.0, 0.9],
     'module__num_units': [10, 20, 50],
     'module__dropout': [0, 0.5],
@@ -181,22 +207,27 @@ search = GridSearchCV(net, params).fit(X, y)
 #+END_SRC
 ** Grid search everything!
 You can grid search the parameters of almost everything:
-- NeuralNet
-- module
-- optimizer
-- criterion
-- DataLoader
-- callbacks
+
+#+REVEAL_HTML: <div style="font-size: 75%;">
+| component    | examples                                                           |
+|--------------+--------------------------------------------------------------------|
+| ~NeuralNet~  | ~lr, max_epochs, batch_size~                                       |
+| ~module~     | ~module__num_units, module__nonlin~                                |
+| ~optimizer~  | ~optimizer__momentum, optimizer__nesterov~                         |
+| ~criterion~  | ~criteron__reduction, criterion__ignore_index~                     |
+| ~DataLoader~ | ~iterator_train__shuffle, iterator_valid__num_workers~             |
+| ~callbacks~  | ~callbacks__print_log__sink, callbacks__mycallback__any_parameter~ |
+#+REVEAL_HTML: </div>
 ** swap out skorch estimator with any sklearn estimator
 #+BEGIN_SRC python
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 
 pipe = Pipeline([
     ('scale', StandardScaler()),
     ('model', net),
 ])
-params = {'model': [net, KNeighborsClassifier(), LogisticRegression()]}
+params = {'model': [net, LogisticRegression(), KNeighborsClassifier()]}
 search = GridSearchCV(pipe, params)
 search.fit(X, y)
 #+END_SRC
@@ -212,15 +243,16 @@ with parallel_backend('dask'):
     search.fit(X, y)
 #+END_SRC
 * Many more additions
-** Save state dict for better compatibility
+** Save ~state_dict~ for better compatibility
 #+BEGIN_SRC python
 from skorch.callbacks import Checkpoint
+
 cp = Checkpoint(monitor='valid_loss_best', dirname='exp1')
 net = NeuralNetClassifier(..., callbacks=[cp])
 net.fit(X, y)  # Checkpoint saves each time valid lost improves
 net.save_params(
-    f_params='mynet.pt',  # <- state dict of module
-    f_optimizer='myoptimizer.pt',  # <- state dict of optimizer
+    f_params='exp1/mynet.pt',  # <- state dict of module
+    f_optimizer='exp1/myoptimizer.pt',  # <- state dict of optimizer
 )
 #+END_SRC
 ** Handling of different data formats
@@ -231,37 +263,33 @@ net.save_params(
 - scipy sparse CSR matrices
 ** Callbacks
 - learning rate schedulers
-- scoring functions (support for custom or sklearn metrics)
+- scoring functions (custom or sklearn metrics)
 - early stopping
 - checkpointing
 - parameter freezing
 - tensorboard
 - ...
 ** Helper for command line usage
-No longer write dozen of lines of argument parsing and still forget
-half of the arguments
+*** Extend training script with a few lines to transform it into a useful CLI
 #+BEGIN_SRC python
 import fire
 from skorch.helper import parse_args
 
-def get_data():
-    ...
-def get_model():
-    class MyModule(nn.Module):
-        ...
-    return NeuralNetClassifier(MyModule, ...)
+# training code goes here
 
 def main(**kwargs):
-    X, y = get_data()
-    my_model = get_model()
+    X, y = ...
+    model = NeuralNetClassifier(...)
     # important: wrap the model with the parsed arguments
-    my_model = parse_args(kwargs)(my_model)
-    my_model.fit(X, y)
+    model = parse_args(kwargs)(model)
+    model.fit(X, y)
 
 if __name__ == '__main__':
     fire.Fire(main)
 #+END_SRC
-**
+No longer write dozen of lines of argument parsing and still forget
+half of the arguments.
+*** Get help for free
 #+BEGIN_SRC shell
 $ python train.py --help
 <NeuralNetClassifier> options:
@@ -287,7 +315,7 @@ $ python train.py --help
     Non-linearity to apply after hidden layers.
   ...
 #+END_SRC
-**
+*** All parameters can now be accessed from the command line
 #+BEGIN_SRC shell
 $ python train.py --lr 0.1 --max_epochs 5 --device 'cuda' \
   --module__hidden_units 50 --module__nonlin 'torch.nn.RReLU(0.1, upper=0.4)' \
@@ -310,6 +338,8 @@ class MyCallback(Callback):
 ** Example: write your own callback
 After training ends, send a tweet with best validation accuracy
 #+BEGIN_SRC python
+from skorch.callbacks import Callback
+
 def send_tweet(msg):
     ...
 
@@ -319,8 +349,8 @@ class TweetAccuracy(Callback):
 
     def on_train_end(self, net, **kwargs):
         best_accuracy = max(net.history[:, 'valid_acc'])
-        if best_accuracy > self.min_accuracy:
-            msg = "Reached an accuracy of {:.6f}!!!".format(best_accuracy)
+        if best_accuracy >= self.min_accuracy:
+            msg = "Reached an accuracy of {:.4f}!!!".format(best_accuracy)
             send_tweet(msg)
 #+END_SRC
 ** Example: implement gradient accumulation
@@ -345,14 +375,22 @@ class GradAccNet(NeuralNetClassifier):
 #+END_SRC
 * Questions?
 skorch: https://github.com/skorch-dev/skorch
+-----
+#+REVEAL_HTML: <div style="font-size: 65%;">
+get the presentation here: https://git.io/JeC0C
 
-- TODO: list of main contributors
-- TODO: Link to presentation on github
+main contributors:
+- [[https://github.com/ottonemo][ottonemo]]
+- [[https://github.com/thomasjpfan][thomasjpfan]]
+- [[https://github.com/BenjaminBossan][benjaminbossan]]
 
-#+attr_html: :width 120px
-[[./assets/NY_RGB.svg]]
+-----
 
 Open positions: https://jobs.newyorker.de
 - Senior Data Scientist in Berlin
 - Senior Python Software Developer in Berlin
-TODO: Verify that this is true at the time of presentation
+
+#+attr_html: :width 100px
+[[./assets/NY_RGB.svg]]
+
+#+REVEAL_HTML: </div>
