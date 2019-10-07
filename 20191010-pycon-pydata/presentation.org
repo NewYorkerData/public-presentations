@@ -64,7 +64,7 @@ ds_train = TensorDataset(torch.from_numpy(X_train), torch.from_numpy(y_train))
 loader_train = DataLoader(ds_train, batch_size=256, shuffle=True)
 ds_valid = TensorDataset(torch.from_numpy(X_valid), torch.from_numpy(y_valid))
 loader_valid = DataLoader(ds_valid, batch_size=256)
-module = MyModule().to(DEVICE)
+module = MyModule(num_units=50).to(DEVICE)
 optimizer = torch.optim.SGD(module.parameters(), lr=0.02)
 criterion = nn.NLLLoss()
 template = "epoch: {} | loss train: {:.4f} | loss valid: {:.4f} | acc valid: {:.4f} | dur: {:.3f}"
