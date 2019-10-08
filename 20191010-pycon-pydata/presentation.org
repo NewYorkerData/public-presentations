@@ -16,6 +16,7 @@
 - one of the contributors to [[https://github.com/skorch-dev/skorch][skorch]]
 - [[https://github.com/BenjaminBossan][BenjaminBossan]] on github
 - head of data science Berlin at NewYorker (fashion company, not magazine)
+link to talk at the end
 ** Become a deep data scientist now!
 #+attr_html: :width 500px
 #+CAPTION:
@@ -54,6 +55,7 @@
 #+BEGIN_SRC python
 import torch
 from torch import nn
+from torch.utils.data import TensorDataset, DataLoader
 
 DEVICE = 'cuda'
 
@@ -145,6 +147,7 @@ from sklearn.base import clone
 from sklearn.model_selection import cross_validate
 
 net.fit(X, y)
+net.partial_fit(X, y)
 net.predict(X)
 net.predict_proba(X)
 net.get_params()
@@ -373,6 +376,11 @@ class GradAccNet(NeuralNetClassifier):
             self.optimizer_.zero_grad()
         return step
 #+END_SRC
+* When not to use skorch
+- super custom PyTorch code, reinforcement learning
+- backend agnostic code (PyTorch, tensorflow, ...)
+- no need at all for sklearn API
+- avoid a very slight performance overhead
 * Questions?
 skorch: https://github.com/skorch-dev/skorch
 -----
