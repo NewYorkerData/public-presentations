@@ -331,6 +331,7 @@ class MyNet(NeuralNet):
     def get_loss(...):
     def get_iterator(...):
     def train_step(...):
+    def validation_step(...):
 
 class MyCallback(Callback):
     def on_train_begin(...):
