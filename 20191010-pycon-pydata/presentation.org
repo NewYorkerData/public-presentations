@@ -270,7 +270,7 @@ net.save_params(
 - early stopping
 - checkpointing
 - parameter freezing
-- tensorboard
+- tensorboard (master)
 - ...
 ** Helper for command line usage
 *** Extend training script with a few lines to transform it into a useful CLI
