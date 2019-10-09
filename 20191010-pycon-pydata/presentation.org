@@ -383,7 +383,19 @@ class GradAccNet(NeuralNetClassifier):
 - no need at all for sklearn API
 - avoid a very slight performance overhead
 * Questions?
+** Apply at NewYorker
+Open positions: https://jobs.newyorker.de
+- Senior Data Scientist in Berlin
+- Senior Python Software Developer in Berlin
+#+attr_html: :width 100px
+#+CAPTION:
+[[./assets/NY_RGB.svg]]
+** Resources
 skorch: https://github.com/skorch-dev/skorch
+#+attr_html: :width 800px
+#+CAPTION:
+[[./assets/qrcode_skorch.svg]]
+
 -----
 #+REVEAL_HTML: <div style="font-size: 65%;">
 get the presentation here: https://git.io/JeC0C
@@ -392,14 +404,4 @@ main contributors:
 - [[https://github.com/ottonemo][ottonemo]]
 - [[https://github.com/thomasjpfan][thomasjpfan]]
 - [[https://github.com/BenjaminBossan][benjaminbossan]]
-
------
-
-Open positions: https://jobs.newyorker.de
-- Senior Data Scientist in Berlin
-- Senior Python Software Developer in Berlin
-
-#+attr_html: :width 100px
-[[./assets/NY_RGB.svg]]
-
 #+REVEAL_HTML: </div>
