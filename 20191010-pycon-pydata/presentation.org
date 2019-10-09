@@ -377,12 +377,17 @@ class GradAccNet(NeuralNetClassifier):
             self.optimizer_.zero_grad()
         return step
 #+END_SRC
-* When not to use skorch
+* Wrap-up
+** When *not* to use skorch
 - super custom PyTorch code, reinforcement learning
 - backend agnostic code (PyTorch, tensorflow, ...)
 - no need at all for sklearn API
 - avoid a very slight performance overhead
-* Questions?
+** When to use skorch
+- gain sklearn API and all associated benefits like hyperparameter search
+- most PyTorch workflows just work
+- avoid boilerplate, standardize code
+- use some of the many utilities just shown
 ** Apply at NewYorker
 Open positions: https://jobs.newyorker.de
 - Senior Data Scientist in Berlin
