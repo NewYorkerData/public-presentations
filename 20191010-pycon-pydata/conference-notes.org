@@ -1,0 +1,212 @@
+* <2019-10-09 Wed 10:26> Keynote
+[[https://de.pycon.org/program/pydata-zeemks-algo-rules-how-do-we-get-the-ethics-into-the-code-carla-hustedt][talk]]
+* <2019-10-09 Wed 11:50> Refactoring in Python
+[[https://de.pycon.org/program/pyconde-ftvnpk-refactoring-in-python-design-patterns-and-approaches-tin-markovic][talk]]
+How to work with old code base
+** sonarcube
+[[https://www.sonarqube.org/][link]]
+identifies and explains code smells
+** give old functions a new interface
+wrap with new better code ("facade")
+* <2019-10-09 Wed 12:23> PyTorch JIT
+[[https://de.pycon.org/program/pydata-8n37p9-hide-code-minimize-dependencies-boost-performance-the-pytorch-jit-tilman-krokotsch][talk]]
+** main advantage is for deployment
+** promises to check
+1. minimize dependencies
+2. hide code
+3. boost performance
+** only jit tracer treated
+not torch script
+first ~net_traced = jit.trace(net, x); jit.save(net_traced, 'net.pt')~
+** no need for packages like torchvision to load the net
+~net_loaded = jit.load('net.pt')~
+or load the traced net in C++
+** network architecture can still be recovered
+hide code doesn't work
+** to profile pytorch code:
+~torch.autograd.profiler.profile~ context manager
+** runtime performance
+- on Alexnet on GPU, a very small improvement in performance but not
+  much (but less variance)
+- generally, almost no performance improvements for CNN architectures
+** don't trace if there is e.g. control flow dependent on data
+* <2019-10-09 Wed 14:00> Play stupid games win stupid prizes (meta programming)
+** ~builtins.__build_class__~
+called each time a class is created
+similar capabilities as ~__new__~
+** safer ~__init_subclass__~
+** ~from sys import settrace~
+** ~audithook~
+** create a new function with ~FunctionType~
+can directly take byte code
+** ~from textwrap import dedent~
+dedents code inside of ~"""foo"""~ with line breaks inside
+* <2019-10-09 Wed 14:38> Feature Engineering
+[[https://de.pycon.org/program/pydata-7eepkx-automating-feature-engineering-for-supervised-learning-methods-open-source-tools-and-prospects-thorben-jensen][talk]]
+[[https://github.com/informationsfabrik/feature-engineering][repo]]
+** featuretools
+*** aggregations (sum, trend, time_since_first)
+*** transformations (e.g. on date)
+*** joins data from distanct tables
+*** TS features
+*** features understandable
+*** not so effective
+** tsfresh
+*** aggregations (min, max, mean)
+*** number of peaks etc.
+*** filtering on features
+** tpot
+*** takes sklearn transformers
+*** uses genetic programming to create best sklearn pipeline
+*** also tests estimators but those can be removed later
+*** efficient but not very transparent
+*** no TS features
+* <2019-10-09 Wed 15:31> Deployment
+[[https://de.pycon.org/program/pydata-lgc8xp-applying-deployment-oriented-mindset-for-building-machine-learning-models-marianna-diachuk][talk]]
+* <2019-10-09 Wed 16:02> Production level data pipelines
+[[https://de.pycon.org/program/pydata-fxuyq9-production-level-data-pipelines-that-make-everyone-happy-using-kedro-yetunde-dada][talk]]
+[[https://github.com/quantumblacklabs/kedro][github of kedro]]
+** contains
+- workflow management (nodes, DAGs)
+- pipeline visualization
+- airflow plugin
+- cookiecutter project management
+- integrates with pytest and sphinx somehow?
+* <2019-10-10 Thu 09:08> Keynote Python 2020+
+[[https://de.pycon.org/program/pyconde-jfncmq-python-2020-ukasz-langa][talk]]
+Lukasz now works on [[https://edgedb.com/][edgedb]]
+* <2019-10-10 Thu 10:04> Beyond paradigms
+[[https://de.pycon.org/program/pyconde-qcnntw-beyond-paradigms-a-new-key-to-grok-python-other-languages-luciano-ramalho][talk]]
+[[https://speakerdeck.com/ramalho/beyond-paradigms-berlin-edition][speakerdeck]]
+- [[http://shirky.com/writings/herecomeseverybody/ontology_overrated.html][article]] on not applying ontology on programming languages
+- [[https://norvig.com/design-patterns/design-patterns.pdf][Norvig]] on design patterns not necessary when using dynamic languages
+- Focus on core language features instead of classifying languages
+* <2019-10-10 Thu 10:50> Gaussian processes for TS forecasts (Juan Orduz)
+Applied for NYer
+* <2019-10-10 Thu 11:51> Data literacy for Managers
+[[https://de.pycon.org/program/pydata-wuebkt-data-literacy-for-managers-alexander-cs-hendorf][talk]]
+[[https://dalspace.library.dal.ca/bitstream/handle/10222/64578/Strategies%2520and%2520Best%2520Practices%2520for%2520Data%2520Literacy%2520Education.pdf][Ridsdale et al]]
+** happy data scientist
+- I feel appreciated
+- I provide value for the company
+- I can improve
+** unhappy data scientist
+- I'm tied up
+- I'm working as an analyst
+- I can't apply my skills
+** explaining data product
+- data collection: no
+- data management: no
+- data evaluation
+  + data visualization
+  + interpretation & understanding
+  + presenting data
+- data application
+  + data ethics
+  + evaluating decisions
+* <2019-10-10 Thu 14:36> sklearn and sklearn contrib
+[[https://de.pycon.org/program/pydata-x7fsx9-current-affairs-updates-and-the-roadmap-of-scikit-learn-and-scikit-learn-contrib-adrin-jalali][talk]]
+** scikit-learn-contrib
+could add skorch there, but any advantage?
+** scikit-learn-extra
+adds a lot of more estimators, e.g.:
+- imbalanced-learn
+- metric-learn
+** Imputers
+new imputers on the nightly build
+** ~permutation_importance~
+can be more indicative than ~feature_importances_~
+** ~HalvingGridSearchCV~ and ~HalvingRandomSearchCV~
+for pruning in hyperparameter search
+* <2019-10-10 Thu 15:33> static typing in Python
+[[https://de.pycon.org/program/pyconde-nh9uey-static-typing-in-python-dustin-ingram][talk]]
+** pypi
+- now supports 2FA (TOTP and WebAuth)
+** PEP 483, 484
+by Guido
+** pytype
+doesn't raise an exception if there's no runtime error caused by the
+types
+* <2019-10-10 Thu 16:05> How to measure your opponent's strength
+[[https://de.pycon.org/program/pydata-3nua9t-how-strong-is-my-opponent-using-bayesian-methods-for-skill-assessment-darina-goldin][talk]]
+[[https://github.com/drdarina/ratings_talk][slides]]
+[[https://github.com/sublee/elo][elo]]
+[[https://github.com/sublee/glicko2][glicko2]]
+[[https://trueskill.org/][trueskill]]
+** ELO
+*** definition
+- cdf of logistic function (thicker tails than normal)
+- new score = old score + K * (score - score_expected), with K being a free variable
+- new players -> larger K
+- more import game -> larger K
+*** issues
+- inactivity has no affect -> stop playing when high
+- new players overvalued
+- issue with players joining, leaving
+- but ELO can be easily modified
+** Glicko/Glicko-2
+*** ideas
+- rating and rating deviation
+- deviation depends on performance volatility
+- decay, deviation increases when not playing (but saturates)
+- update depends on the size of deviation
+*** issues
+- ratings are only defined for a certain time
+- harder to explain
+** TrueSkill
+*** ideas
+- find equally skilled teams
+- team skill depends on player skill
+- update mechanism is proprietary
+*** pros
+- update after each match
+- fast convergence
+- partial game completion
+*** cons
+- proprietary
+- hard to tune
+** advice
+- ELO is mostly good enough
+- Glicko-2 when there are longer breaks of players
+- Trueskill when there are ad hoc teams (but ELO and glicko can be
+  made to work with teams)
+- tuning: start with a good guess, use CV to tune
+* <2019-10-10 Thu 17:05> Lightning talks
+** [[https://github.com/bunkahle/PILasOPENCV][PILasOPENCV]]
+- migrate from PIL to OPENCV
+- works with truetype fonts
+** [[https://datengui.de/][datengui.de]]
+- [[https://github.com/datenguide/datenguide][github]]
+- ~pip install datenguidepy~
+- uses openly hosted data
+- low barrier of entry
+- makes it accessible via APIs (graphql)
+- python library for that (-> pandas)
+- description of the fields
+** [[https://www.qt.io/qt-for-python][qt for python]]
+** [[https://klass.live/pyconde][klass.live]]
+live coding for a class
+* <2019-10-11 Fri 09:11> Keynote Peter Wang: OSS in an era of cloud and ML
+[[https://de.pycon.org/program/pydata-ggr9zm-rethinking-open-source-in-the-era-of-cloud-machine-learning-peter-wang][talk]]
+** open source is about empowerment and alignment
+* <2019-10-11 Fri 10:06> automated testing with pytest
+[[https://de.pycon.org/program/pyconde-3juwnc-introduction-to-automated-testing-with-pytest-raphael-pierzina][talk]]
+[[https://raphael.codes/blog/customizing-your-pytest-test-suite-part-1/][blog]]
+[[https://github.com/hackebrot/earth][code to reproduce]]
+** ~pytest --durations 10~
+shows the 10 slowest tests
+** ~pytest.fixture(name="foo")~
+use named fixtures to avoid name conflicts
+* <2019-10-11 Fri 10:57> bias mitigation
+[[https://de.pycon.org/program/pydata-pmdfa3-transforming-a-legacy-system-into-a-bias-mitigating-ai-solution-for-debt-repayment-avare-stewart][talk]]
+[[https://github.com/IBM/AIF360][tool to check for fairness]]
+** text annotation tool
+- [[https://github.com/chakki-works/doccano][doccano text]]
+- looks like an alternative to brat nlp
+* <2019-10-11 Fri 11:51> Professional career development for DS
+[[https://de.pycon.org/program/pydata-e3lfdl-professional-development-and-career-progression-for-data-scientists-noa-tamir][talk]]
+[[https://github.com/noatamir/Talks/blob/master/PyConDE2019-DSCareer-Grow.pdf][slides]]
+* Random links
+- [[https://github.com/argoproj/argo][Argo Workflows: Get stuff done with Kubernetes]]
+- [[https://github.com/tdda/tdda][test driven data analysis]]
+- [[https://github.com/facebookresearch/higher][higher order gradients in pytorch]]
